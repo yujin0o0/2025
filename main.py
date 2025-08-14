@@ -1,5 +1,6 @@
-# fancy_mbti_career_app.py
+# ultra_fancy_mbti_career_app.py
 import streamlit as st
+import random
 
 # ----------------------------
 # 데이터: MBTI 유형별 진로 추천
@@ -24,55 +25,78 @@ career_recommendations = {
 }
 
 # ----------------------------
-# Streamlit 설정
+# Streamlit 페이지 설정
 # ----------------------------
-st.set_page_config(page_title="MBTI 진로 추천", page_icon="🎨", layout="centered")
+st.set_page_config(page_title="💎 초호화 MBTI 진로 추천", page_icon="🌈", layout="centered")
 
 # ----------------------------
-# CSS 스타일 적용
+# CSS 애니메이션 + 스타일
 # ----------------------------
 st.markdown("""
     <style>
+        /* 움직이는 배경 */
         body {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
-            font-family: 'Helvetica', sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fcb69f, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Trebuchet MS', sans-serif;
         }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* 제목 */
         .title {
-            font-size: 40px;
+            font-size: 50px;
             text-align: center;
-            color: #fff;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-        }
-        .stSelectbox {
-            font-size: 20px;
-        }
-        .career-card {
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            font-size: 18px;
-        }
-        .career-card:hover {
-            transform: scale(1.02);
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .stButton>button {
-            background: linear-gradient(45deg, #ff6f61, #ff9966);
             color: white;
-            font-size: 18px;
-            border-radius: 10px;
-            padding: 10px 20px;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        /* 버튼 */
+        .stButton>button {
+            background: linear-gradient(45deg, #ff6f91, #ff9671, #ffc75f);
+            background-size: 300% 300%;
+            animation: shine 3s linear infinite;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 12px;
+            padding: 12px 30px;
             border: none;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         .stButton>button:hover {
-            background: linear-gradient(45deg, #ff9966, #ff6f61);
-            transform: scale(1.05);
+            transform: scale(1.08);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+        }
+        @keyframes shine {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* 결과 카드 */
+        .career-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 15px 0;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #444;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            transform: perspective(600px) rotateX(0deg);
+            transition: all 0.4s ease;
+        }
+        .career-card:hover {
+            transform: perspective(600px) rotateX(5deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
     </style>
 """, unsafe_allow_html=True)
@@ -80,23 +104,21 @@ st.markdown("""
 # ----------------------------
 # UI
 # ----------------------------
-st.markdown("<div class='title'>🎨 MBTI 기반 진로 추천 🎯</div>", unsafe_allow_html=True)
-st.write("당신의 MBTI 성향을 선택하면, 화려하게 어울리는 직업을 추천해드립니다!")
+st.markdown("<div class='title'>💎 초호화 MBTI 기반 진로 추천 🌈</div>", unsafe_allow_html=True)
+st.write("✨ 당신의 MBTI 성향을 선택하면, 반짝이는 추천 직업을 보여드립니다! ✨")
 
-# MBTI 선택
 mbti_types = list(career_recommendations.keys())
-selected_mbti = st.selectbox("당신의 MBTI를 선택하세요", mbti_types)
+selected_mbti = st.selectbox("🔮 당신의 MBTI를 선택하세요", mbti_types)
 
-# 버튼 클릭 시 결과 표시
-if st.button("✨ 진로 추천 보기 ✨"):
+if st.button("🌟 진로 추천 보기 🌟"):
     careers = career_recommendations.get(selected_mbti, [])
     if careers:
-        st.markdown(f"## 🌟 {selected_mbti} 유형 추천 진로 🌟")
+        st.markdown(f"## 🌈 {selected_mbti} 유형의 추천 직업 🌈")
         for job in careers:
-            st.markdown(f"<div class='career-card'>💼 {job}</div>", unsafe_allow_html=True)
+            emoji = random.choice(["💼", "🚀", "🎨", "📚", "💡", "🛠️"])
+            st.markdown(f"<div class='career-card'>{emoji} {job}</div>", unsafe_allow_html=True)
     else:
-        st.warning("해당 MBTI 유형에 대한 데이터가 없습니다.")
+        st.warning("데이터가 없습니다 😢")
 
-# 푸터
 st.markdown("---")
-st.caption("© 2025 Fancy MBTI Career App | Designed with ❤️ in Streamlit")
+st.caption("© 2025 Ultra Fancy MBTI Career App | Designed with 💖")
