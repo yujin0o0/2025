@@ -41,27 +41,36 @@ def smart_pomodoro_module():
         task_name = st.text_input("수행할 작업 이름", key="pomodoro_task_input")
 
         # ⭐️ AI 기반 작업 복잡성 추론 (규칙 기반 시뮬레이션)
-        complexity_options = ["매우 쉬움", "쉬움", "보통", "어려움", "매우 어려움"]
-        selected_complexity = st.selectbox("작업 복잡성 (AI가 추론했다고 가정)", complexity_options, key="complexity_select")
+        complexity_options = ["15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분"]
+        selected_complexity = st.selectbox("집중 시간 설정", complexity_options, key="complexity_select")
 
         # ⭐️ 복잡성에 따른 집중/휴식 시간 제안 로직 (AI 시뮬레이션)
         focus_minutes_suggestion = 25
         break_minutes_suggestion = 5
 
-        if selected_complexity == "매우 쉬움":
+        if selected_complexity == "15분":
             focus_minutes_suggestion = 15
-            break_minutes_suggestion = 3
-        elif selected_complexity == "쉬움":
+            break_minutes_suggestion = 5
+        elif selected_complexity == "20분":
             focus_minutes_suggestion = 20
-            break_minutes_suggestion = 4
-        elif selected_complexity == "보통":
+            break_minutes_suggestion = 5
+        elif selected_complexity == "25분":
             focus_minutes_suggestion = 25
             break_minutes_suggestion = 5
-        elif selected_complexity == "어려움":
+        elif selected_complexity == "30분":
+            focus_minutes_suggestion = 30
+            break_minutes_suggestion = 5
+        elif selected_complexity == "35분":
             focus_minutes_suggestion = 35
-            break_minutes_suggestion = 7
-        elif selected_complexity == "매우 어려움":
+            break_minutes_suggestion = 5
+        elif selected_complexity == "40분":
+            focus_minutes_suggestion = 40
+            break_minutes_suggestion = 5
+        elif selected_complexity == "45분":
             focus_minutes_suggestion = 45
+            break_minutes_suggestion = 5
+        elif selected_complexity == "50분":
+            focus_minutes_suggestion = 50
             break_minutes_suggestion = 10
 
         st.info(f"✨ AI의 제안: 집중 {focus_minutes_suggestion}분 / 휴식 {break_minutes_suggestion}분")
