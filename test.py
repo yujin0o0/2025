@@ -69,7 +69,19 @@ def smart_pomodoro_module():
             focus_minutes_suggestion = 30
             break_minutes_suggestion = 5
         elif selected_complexity == "35분":
-          
+            focus_minutes_suggestion = 35
+            break_minutes_suggestion = 5
+        elif selected_complexity == "40분":
+            focus_minutes_suggestion = 40
+            break_minutes_suggestion = 10
+        elif selected_complexity == "45분":
+            focus_minutes_suggestion = 45
+            break_minutes_suggestion = 10
+        elif selected_complexity == "50분":
+            focus_minutes_suggestion = 50
+            break_minutes_suggestion = 10
+
+
 
         st.success(f"✨ AI의 최적화된 제안: **집중 {focus_minutes_suggestion}분** / **휴식 {break_minutes_suggestion}분**")
 
