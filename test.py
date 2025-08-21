@@ -499,8 +499,8 @@ def evening_reflection_module():
 
 
 # --- 메인 앱 레이아웃 ---
-st.title("🌟 나의 스마트 비서: 포커스 & 성장 도우미 🌟")
-st.markdown("✨ AI와 함께 당신의 집중력, 습관, 그리고 성장을 관리해보세요!")
+st.title("🌟 나의 스마트 비서 성장 도우미💖 🌟")
+st.markdown("✨ 당신의 집중력, 습관, 그리고 성장을 관리해보세요! ✨")
 
 st.markdown("<br>", unsafe_allow_html=True) # 공백 추가
 
