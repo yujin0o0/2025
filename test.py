@@ -6,7 +6,7 @@ import random
 # --- 기본 설정 (페이지 레이아웃 및 타이틀) ---
 st.set_page_config(
     layout="wide",
-    page_title="나의 스마트 비서: 포커스 & 성장 도우미",
+    page_title="나의 스마트 비서 성장 도우미💖",
     initial_sidebar_state="expanded" # 사이드바 기본 확장
 )
 
@@ -49,14 +49,17 @@ def smart_pomodoro_module():
         task_name = st.text_input("수행할 작업 이름을 입력하세요", key="pomodoro_task_input", placeholder="예: 보고서 작성, 코딩 학습")
 
         # ⭐️ AI 기반 작업 복잡성 추론 (규칙 기반 시뮬레이션)
-        complexity_options = ["15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분"]
+        complexity_options = ["10분","15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분"]
         selected_complexity = st.selectbox("집중 시간 설정", complexity_options, key="complexity_select")
 
         # ⭐️ 복잡성에 따른 집중/휴식 시간 제안 로직 (AI 시뮬레이션)
         focus_minutes_suggestion = 25
         break_minutes_suggestion = 5
-
-        if selected_complexity == "15분":
+        
+        if selected_complexity == "10분":
+            focus_minutes_suggestion = 10
+            break_minutes_suggestion = 5
+        elif selected_complexity == "15분":
             focus_minutes_suggestion = 15
             break_minutes_suggestion = 5
         elif selected_complexity == "20분":
